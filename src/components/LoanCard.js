@@ -9,9 +9,9 @@ const LoanCard = (props) => {
     <Card
       style={{
         marginBottom: 20,
-        width: 600,
+        width: 500,
         display: "flex",
-        padding: 10,
+        padding: 15,
         flex: 1,
         flexDirection: "row",
       }}
@@ -22,7 +22,10 @@ const LoanCard = (props) => {
         <p className="details">{`Available Amount: ${available}`}</p>
         <p className="details">{`Annualized Return: ${annualised_return}`}</p>
       </div>
-      <div className="invest-cta-container"></div>
+      <div className="invest-cta-container">
+        <p className="invested-check">{"Invested"}</p>
+        <button className="invest-button">INVEST</button>
+      </div>
     </Card>
   );
 };

@@ -6,13 +6,33 @@
 }
 .details {
   margin: 0px;
+  font-weight: 500;
   font-size: 14px;
 }
 .info-container {
-  display: "flex";
-  flex: 2;
+  display: flex;
+  flex-direction: column;
+  flex: 3;
 }
 .invest-cta-container {
   flex: 1;
-  display: "flex";
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+.invest-button {
+  cursor: pointer;
+  align-self: flex-end;
+  height: 45px;
+  background-color: #fce300;
+  padding-right: 25px;
+  padding-left: 25px;
+  font-size: 16px;
+  border-width: 0px;
+}
+.invested-check {
+  align-self: flex-end;
+  color: #227800;
+  font-weight: 500;
+  font-size: 14px;
 }

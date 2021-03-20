@@ -11,8 +11,3 @@
 .card:hover {
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
 }
-
-/* Add some padding inside the card container */
-.container {
-  padding: 2px 16px;
-}
