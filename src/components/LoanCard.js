@@ -3,8 +3,12 @@ import Card from "./common/Card";
 import "./LoanCard.css";
 
 const LoanCard = (props) => {
-  const { loan } = props;
+  const { loan, callback } = props;
   const { title, tranche, available, annualised_return } = loan;
+
+  const onInvestClick = () => {
+    callback(loan);
+  };
   return (
     <Card
       style={{
@@ -24,7 +28,9 @@ const LoanCard = (props) => {
       </div>
       <div className="invest-cta-container">
         <p className="invested-check">{"Invested"}</p>
-        <button className="invest-button">INVEST</button>
+        <button onClick={onInvestClick} className="invest-button">
+          INVEST
+        </button>
       </div>
     </Card>
   );
