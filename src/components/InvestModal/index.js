@@ -22,7 +22,7 @@ const InvestModal = (props) => {
     updateAmount("");
   };
   return (
-    <Modal show={show} onClose={onClose}>
+    <Modal show={show} onClose={onClose} testId={"invest-modal"}>
       <p className="invest-modal-heading">Invest in Loan</p>
       <p className="invest-modal-title">{title}</p>
       <div className="invest-modal-info-row">
@@ -38,9 +38,15 @@ const InvestModal = (props) => {
         <input
           className="invest-amount-input"
           value={amount}
+          placeholder="Enter amount"
           onChange={onInvestmentAmountChange}
         />
-        <button onClick={onInvest} className="invest-button" disabled={!amount}>
+        <button
+          data-testid="invest-modal-button"
+          onClick={onInvest}
+          className="invest-button"
+          disabled={!amount}
+        >
           INVEST
         </button>
       </div>

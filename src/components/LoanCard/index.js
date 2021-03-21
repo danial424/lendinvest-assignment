@@ -4,13 +4,14 @@ import "./LoanCard.css";
 
 const LoanCard = (props) => {
   const { loan, callback } = props;
-  const { title, tranche, available, annualised_return, invested } = loan;
+  const { title, tranche, available, annualised_return, invested, id } = loan;
 
   const onInvestClick = () => {
     callback(loan);
   };
   return (
     <Card
+      data-testid={id}
       style={{
         marginBottom: 20,
         width: 500,
@@ -29,6 +30,7 @@ const LoanCard = (props) => {
       <div className="invest-cta-container">
         {invested > 0 && <p className="invested-check">{"Invested"}</p>}
         <button
+          data-testid={`${id}-invest-card-button`}
           onClick={onInvestClick}
           className="invest-button"
           disabled={!available}

@@ -3,12 +3,13 @@ import "./App.css";
 import InvestModal from "./components/InvestModal";
 import LoanCard from "./components/LoanCard";
 import CurrentLoansData from "./dataService/current-loans.json";
+import { formatNumber } from "./Utils";
 
 function App() {
   const { loans } = CurrentLoansData;
   const [loansData, updateLoansData] = useState(
     loans.map((l) => {
-      return { ...l, available: l.available.replace(/,/g, ""), invested: 0 };
+      return { ...l, available: formatNumber(l.available), invested: 0 };
     })
   );
   const [selectedLoanToInvest, selectLoanToInvest] = useState({});
@@ -41,15 +42,20 @@ function App() {
     }, 0);
   };
   return (
-    <div className="app">
+    <div className="app" data-testid="app-component">
       <div className="grey-box">
         <h1 className="heading">Current Loans</h1>
-        {loansData.map((loan) => {
-          return <LoanCard loan={loan} callback={onInvest} />;
-        })}
+        <div id="loan-cards">
+          {loansData.map((loan) => {
+            return <LoanCard loan={loan} callback={onInvest} key={loan.id} />;
+          })}
+        </div>
         <div className="total-available-container">
           <p className="total-available-label">{`Total amount available for investments:`}</p>
-          <p className="total-available-value">{`£${getTotalAvailableAmount()}`}</p>
+          <p
+            className="total-available-value"
+            data-testid="total-available-value"
+          >{`£${getTotalAvailableAmount()}`}</p>
         </div>
       </div>
       <InvestModal

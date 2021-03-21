@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Modal.css";
 
 const Modal = (props) => {
-  const { show, children, onClose = () => {} } = props;
+  const { show, children, onClose, testId } = props;
   const [visible, setVisibleState] = useState(show);
 
   useEffect(() => {
@@ -13,16 +13,14 @@ const Modal = (props) => {
   }, [show]);
 
   const toggleModalState = () => {
-    setVisibleState(!visible);
-    if (visible) {
-      onClose();
-    }
+    onClose();
   };
 
   return (
     <div
       onClick={toggleModalState}
       id="myModal"
+      data-testid={testId}
       className="modal"
       style={{ display: visible ? "block" : "none" }}
     >
@@ -33,9 +31,13 @@ const Modal = (props) => {
           e.stopPropagation();
         }}
       >
-        {/* <span onClick={toggleModalState} className="close">
+        <span
+          data-testid="modal-cross-icon"
+          onClick={toggleModalState}
+          className="close"
+        >
           &times;
-        </span> */}
+        </span>
         {children}
       </div>
     </div>
