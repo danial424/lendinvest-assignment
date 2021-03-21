@@ -33,9 +33,9 @@ const Modal = (props) => {
           e.stopPropagation();
         }}
       >
-        <span onClick={toggleModalState} className="close">
+        {/* <span onClick={toggleModalState} className="close">
           &times;
-        </span>
+        </span> */}
         {children}
       </div>
     </div>

@@ -1,10 +1,10 @@
 import React from "react";
-import Card from "./common/Card";
+import Card from "../common/Card";
 import "./LoanCard.css";
 
 const LoanCard = (props) => {
   const { loan, callback } = props;
-  const { title, tranche, available, annualised_return } = loan;
+  const { title, tranche, available, annualised_return, invested } = loan;
 
   const onInvestClick = () => {
     callback(loan);
@@ -27,8 +27,12 @@ const LoanCard = (props) => {
         <p className="details">{`Annualized Return: ${annualised_return}`}</p>
       </div>
       <div className="invest-cta-container">
-        <p className="invested-check">{"Invested"}</p>
-        <button onClick={onInvestClick} className="invest-button">
+        {invested > 0 && <p className="invested-check">{"Invested"}</p>}
+        <button
+          onClick={onInvestClick}
+          className="invest-button"
+          disabled={!available}
+        >
           INVEST
         </button>
       </div>
